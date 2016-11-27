@@ -3,10 +3,27 @@
  * https://github.com/mervick/emojionearea
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2016-09-27T09:32Z
+ * Date: 2016-11-27T01:08Z
  */
-(function(document, window, $) {
-    'use strict';
+window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
+document = window.document || {};
+
+; ( function ( factory, global ) {
+    if ( typeof require === "function" && typeof exports === "object" && typeof module === "object" ) {
+
+        // CommonJS
+        factory( require( "jquery" ) );
+    } else if ( typeof define === "function" && define.amd ) {
+
+        // AMD
+        define( [ "jquery" ], factory );
+    } else {
+
+        // Normal script tag
+        factory( global.jQuery );
+    }
+}( function ( $ ) {
+    "use strict";
 
     var unique = 0;
     var eventStorage = {};
@@ -1208,4 +1225,4 @@
 
     $.fn.emojioneArea.defaults = getDefaultOptions();
 
-}) (document, window, jQuery);
+}, window ) );
